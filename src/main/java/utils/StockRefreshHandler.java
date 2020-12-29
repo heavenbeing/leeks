@@ -14,6 +14,7 @@ import java.util.Vector;
 
 public abstract class StockRefreshHandler extends DefaultTableModel {
     private static String[] columnNames = new String[]{"编码", "股票名称", "当前价", "涨跌", "涨跌幅", "最高价", "最低价", "更新时间"};
+    private static String[] columnNamesEnglish= new String[]{"code", "stock name", "current price", "change", "change percent", "high", "low", "update time"};
 
     private JTable table;
     private boolean colorful = true;
@@ -37,7 +38,7 @@ public abstract class StockRefreshHandler extends DefaultTableModel {
         if (colorful) {
             setColumnIdentifiers(columnNames);
         } else {
-            setColumnIdentifiers(PinYinUtils.toPinYin(columnNames));
+            setColumnIdentifiers(columnNamesEnglish);
         }
         TableRowSorter<DefaultTableModel> rowSorter = new TableRowSorter<>(this);
         Comparator<Object> dobleComparator = (o1, o2) -> {

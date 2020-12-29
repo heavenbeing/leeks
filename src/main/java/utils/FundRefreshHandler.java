@@ -16,6 +16,7 @@ import java.util.Vector;
 
 public abstract class FundRefreshHandler extends DefaultTableModel{
     private static String[] columnNames = {"编码", "基金名称", "估算净值", "估算涨跌", "更新时间", "当日净值"};
+    private static String[] columnNamesEn = {"code", "fund name", "estimate net value", "estimate change", "update time", "today net value"};
 
     private JTable table;
     private boolean colorful = true;
@@ -40,7 +41,7 @@ public abstract class FundRefreshHandler extends DefaultTableModel{
         if (colorful) {
             setColumnIdentifiers(columnNames);
         } else {
-            setColumnIdentifiers(PinYinUtils.toPinYin(columnNames));
+            setColumnIdentifiers(columnNamesEn);
         }
         TableRowSorter<DefaultTableModel> rowSorter = new TableRowSorter<>(this);
         Comparator<Object> doubleComparator = (o1, o2) -> {
